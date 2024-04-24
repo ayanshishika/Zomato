@@ -72,10 +72,10 @@
 		</dependency>
 
 		<dependency>
-    <groupId>org.jacoco</groupId> 
-    <artifactId>jacoco-maven-plugin</artifactId>
-    <version>0.8.7</version>
-</dependency>
+            <groupId>org.jacoco</groupId> 
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -84,6 +84,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<mainClass>com.javaproject.MainClassName</mainClass>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -94,56 +95,37 @@
 			</plugin>
 
 			<plugin>
-    <groupId>org.jacoco</groupId>
-    <artifactId>jacoco-maven-plugin</artifactId>
-    <version>${jacoco.version}</version>
-    <executions>
-        <execution>
-            <id>jacoco-initialize</id>
-            <goals>
-                <goal>prepare-agent</goal>
-            </goals>
-        </execution>
-        <execution>
-            <id>jacoco-site</id>
-            <phase>package</phase>
-            <goals>
-                <goal>report</goal>
-            </goals>
-        </execution>
-    </executions>
-</plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-       <distributionManagement>
-	<repository>
-	      <id>maven-releases</id>
-	      <url>http://13.201.37.104:8081/repository/maven-releases/</url>
-	    </repository>
+
+	<distributionManagement>
+		<repository>
+			<id>maven-releases</id>
+			<url>http://13.201.37.104:8081/repository/maven-releases/</url>
+		</repository>
 	    
-	    <snapshotRepository>
-	      <id>maven-snapshots</id>
-	      <url>http://13.201.37.104:8081/repository/maven-snapshots/</url>
-	    </snapshotRepository>
-	    
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<url>http://13.201.37.104:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
 	</distributionManagement>
-	<plugins>
-    <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-            <mainClass>spring-boot-maven-plugin</mainClass>
-            <excludes>
-                <exclude>
-                    <groupId>org.projectlombok</groupId>
-                    <artifactId>lombok</artifactId>
-                </exclude>
-            </excludes>
-        </configuration>
-    </plugin>
-    <!-- Other plugins -->
-</plugins>
-
-	
-
 </project>
