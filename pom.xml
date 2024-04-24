@@ -127,6 +127,23 @@
 	    </snapshotRepository>
 	    
 	</distributionManagement>
+	<plugins>
+    <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+            <mainClass>spring-boot-maven-plugin</mainClass>
+            <excludes>
+                <exclude>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclude>
+            </excludes>
+        </configuration>
+    </plugin>
+    <!-- Other plugins -->
+</plugins>
+
 	
 
 </project>
